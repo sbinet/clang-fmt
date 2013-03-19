@@ -26,12 +26,18 @@ def configure(ctx):
 def build(ctx):
     ctx(
         features="cxx cxxprogram",
-        name="clang-format",
+        name="clang-fmt",
         source=["ClangFormat.cpp",
+                "clang-format/Format.cpp",
+                "clang-format/TokenAnnotator.cpp",
+                "clang-format/UnwrappedLineParser.cpp",
+
+                "clang-basic/OperatorPrecedence.cpp",
                 ],
-        target="clang-format",
+        target="clang-fmt",
         #cxxflags = "-std=c++11",
         use="LLVM-static clang-static",
+        includes = ".",
         )
     return
 
